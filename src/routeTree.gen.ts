@@ -9,58 +9,101 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as OrganigramRouteImport } from './routes/organigram'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as AlgorithmsIndexRouteImport } from './routes/Algorithms/index'
-import { Route as AlgorithmsSortingRouteImport } from './routes/Algorithms/sorting'
+import { Route as AlgorithmsIndexRouteImport } from './routes/algorithms/index'
+import { Route as AlgorithmsSortingRouteImport } from './routes/algorithms/sorting'
+import { Route as AlgorithmsSearchingRouteImport } from './routes/algorithms/searching'
 
+const OrganigramRoute = OrganigramRouteImport.update({
+  id: '/organigram',
+  path: '/organigram',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AlgorithmsIndexRoute = AlgorithmsIndexRouteImport.update({
-  id: '/Algorithms/',
-  path: '/Algorithms/',
+  id: '/algorithms/',
+  path: '/algorithms/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AlgorithmsSortingRoute = AlgorithmsSortingRouteImport.update({
-  id: '/Algorithms/sorting',
-  path: '/Algorithms/sorting',
+  id: '/algorithms/sorting',
+  path: '/algorithms/sorting',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AlgorithmsSearchingRoute = AlgorithmsSearchingRouteImport.update({
+  id: '/algorithms/searching',
+  path: '/algorithms/searching',
   getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/Algorithms/sorting': typeof AlgorithmsSortingRoute
-  '/Algorithms': typeof AlgorithmsIndexRoute
+  '/organigram': typeof OrganigramRoute
+  '/algorithms/searching': typeof AlgorithmsSearchingRoute
+  '/algorithms/sorting': typeof AlgorithmsSortingRoute
+  '/algorithms': typeof AlgorithmsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/Algorithms/sorting': typeof AlgorithmsSortingRoute
-  '/Algorithms': typeof AlgorithmsIndexRoute
+  '/organigram': typeof OrganigramRoute
+  '/algorithms/searching': typeof AlgorithmsSearchingRoute
+  '/algorithms/sorting': typeof AlgorithmsSortingRoute
+  '/algorithms': typeof AlgorithmsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/Algorithms/sorting': typeof AlgorithmsSortingRoute
-  '/Algorithms/': typeof AlgorithmsIndexRoute
+  '/organigram': typeof OrganigramRoute
+  '/algorithms/searching': typeof AlgorithmsSearchingRoute
+  '/algorithms/sorting': typeof AlgorithmsSortingRoute
+  '/algorithms/': typeof AlgorithmsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/Algorithms/sorting' | '/Algorithms'
+  fullPaths:
+    | '/'
+    | '/organigram'
+    | '/algorithms/searching'
+    | '/algorithms/sorting'
+    | '/algorithms'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/Algorithms/sorting' | '/Algorithms'
-  id: '__root__' | '/' | '/Algorithms/sorting' | '/Algorithms/'
+  to:
+    | '/'
+    | '/organigram'
+    | '/algorithms/searching'
+    | '/algorithms/sorting'
+    | '/algorithms'
+  id:
+    | '__root__'
+    | '/'
+    | '/organigram'
+    | '/algorithms/searching'
+    | '/algorithms/sorting'
+    | '/algorithms/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  OrganigramRoute: typeof OrganigramRoute
+  AlgorithmsSearchingRoute: typeof AlgorithmsSearchingRoute
   AlgorithmsSortingRoute: typeof AlgorithmsSortingRoute
   AlgorithmsIndexRoute: typeof AlgorithmsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/organigram': {
+      id: '/organigram'
+      path: '/organigram'
+      fullPath: '/organigram'
+      preLoaderRoute: typeof OrganigramRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -68,18 +111,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/Algorithms/': {
-      id: '/Algorithms/'
-      path: '/Algorithms'
-      fullPath: '/Algorithms'
+    '/algorithms/': {
+      id: '/algorithms/'
+      path: '/algorithms'
+      fullPath: '/algorithms'
       preLoaderRoute: typeof AlgorithmsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/Algorithms/sorting': {
-      id: '/Algorithms/sorting'
-      path: '/Algorithms/sorting'
-      fullPath: '/Algorithms/sorting'
+    '/algorithms/sorting': {
+      id: '/algorithms/sorting'
+      path: '/algorithms/sorting'
+      fullPath: '/algorithms/sorting'
       preLoaderRoute: typeof AlgorithmsSortingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/algorithms/searching': {
+      id: '/algorithms/searching'
+      path: '/algorithms/searching'
+      fullPath: '/algorithms/searching'
+      preLoaderRoute: typeof AlgorithmsSearchingRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -87,6 +137,8 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  OrganigramRoute: OrganigramRoute,
+  AlgorithmsSearchingRoute: AlgorithmsSearchingRoute,
   AlgorithmsSortingRoute: AlgorithmsSortingRoute,
   AlgorithmsIndexRoute: AlgorithmsIndexRoute,
 }

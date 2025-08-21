@@ -14,7 +14,7 @@ function App() {
         <p>
           Edit <code>src/routes/index.tsx</code> and save to reload.
         </p>
-        <Link to="/Algorithms">Algorithms</Link>
+        <Link to="/algorithms">Algorithms</Link>
       </header>
     </div>
   );

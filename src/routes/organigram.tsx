@@ -1,9 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-export const Route = createFileRoute("/Algorithms/sorting")({
+export const Route = createFileRoute("/organigram")({
   component: RouteComponent,
 });
 
 function RouteComponent() {
-  return <div>Hello "/Algorithms/sorting"!</div>;
+  return <div>Hello "/organigram"!</div>;
 }
