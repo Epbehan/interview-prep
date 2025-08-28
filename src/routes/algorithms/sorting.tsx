@@ -5,5 +5,11 @@ export const Route = createFileRoute("/algorithms/sorting")({
 });
 
 function RouteComponent() {
-  return <div>Hello "/Algorithms/sorting"!</div>;
+  return (
+    <div>
+      Hello,
+      <br></br>
+      This is the Sorting Algorithms page!
+    </div>
+  );
 }
