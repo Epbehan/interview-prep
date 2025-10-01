@@ -1,7 +1,5 @@
-// src/routes/algorithms/sorting/bubbleSort/index.tsx
 import { createFileRoute } from "@tanstack/react-router";
 
-// This component is the actual content for the Bubble Sort page.
 function BubbleSortPage() {
   return (
     <div>
@@ -17,7 +15,6 @@ function BubbleSortPage() {
   );
 }
 
-// Define the route for this file.
 export const Route = createFileRoute("/algorithms/sorting/bubbleSort")({
   component: BubbleSortPage,
 });
