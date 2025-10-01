@@ -15,7 +15,6 @@ function SortingLayout() {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const current = pathname.replace(/\/+$/, "");
 
-  // When on /algorithms/sorting (the base overview), highlight "Overview"
   const tabsValue =
     current === "/algorithms/sorting" ? "/algorithms/sorting" : current;
 
@@ -66,8 +65,7 @@ function SortingLayout() {
           />
         </Tabs>
       </AppBar>
-
-      {/* ✅ Every child page (including the index.tsx overview) renders here */}
+      
       <Box sx={{ p: 2 }}>
         <Outlet />
       </Box>
