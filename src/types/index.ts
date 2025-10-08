@@ -1,4 +1,4 @@
-export enum Algorithms {
+export enum Algorythms {
   BubbleSort = "BubbleSort",
   InsertionSort = "InsertionSort",
   MergeSort = "MergeSort",

@@ -12,8 +12,14 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as OrganigramRouteImport } from './routes/organigram'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AlgorithmsIndexRouteImport } from './routes/algorithms/index'
-import { Route as AlgorithmsSortingRouteImport } from './routes/algorithms/sorting'
 import { Route as AlgorithmsSearchingRouteImport } from './routes/algorithms/searching'
+import { Route as AlgorithmsSortingRouteRouteImport } from './routes/algorithms/sorting/route'
+import { Route as AlgorithmsSortingIndexRouteImport } from './routes/algorithms/sorting/index'
+import { Route as AlgorithmsSortingSelectionSortRouteImport } from './routes/algorithms/sorting/selectionSort'
+import { Route as AlgorithmsSortingQuickSortRouteImport } from './routes/algorithms/sorting/quickSort'
+import { Route as AlgorithmsSortingMergeSortRouteImport } from './routes/algorithms/sorting/mergeSort'
+import { Route as AlgorithmsSortingInsertionSortRouteImport } from './routes/algorithms/sorting/insertionSort'
+import { Route as AlgorithmsSortingBubbleSortRouteImport } from './routes/algorithms/sorting/bubbleSort'
 
 const OrganigramRoute = OrganigramRouteImport.update({
   id: '/organigram',
@@ -30,68 +36,137 @@ const AlgorithmsIndexRoute = AlgorithmsIndexRouteImport.update({
   path: '/algorithms/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AlgorithmsSortingRoute = AlgorithmsSortingRouteImport.update({
-  id: '/algorithms/sorting',
-  path: '/algorithms/sorting',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const AlgorithmsSearchingRoute = AlgorithmsSearchingRouteImport.update({
   id: '/algorithms/searching',
   path: '/algorithms/searching',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AlgorithmsSortingRouteRoute = AlgorithmsSortingRouteRouteImport.update({
+  id: '/algorithms/sorting',
+  path: '/algorithms/sorting',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AlgorithmsSortingIndexRoute = AlgorithmsSortingIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AlgorithmsSortingRouteRoute,
+} as any)
+const AlgorithmsSortingSelectionSortRoute =
+  AlgorithmsSortingSelectionSortRouteImport.update({
+    id: '/selectionSort',
+    path: '/selectionSort',
+    getParentRoute: () => AlgorithmsSortingRouteRoute,
+  } as any)
+const AlgorithmsSortingQuickSortRoute =
+  AlgorithmsSortingQuickSortRouteImport.update({
+    id: '/quickSort',
+    path: '/quickSort',
+    getParentRoute: () => AlgorithmsSortingRouteRoute,
+  } as any)
+const AlgorithmsSortingMergeSortRoute =
+  AlgorithmsSortingMergeSortRouteImport.update({
+    id: '/mergeSort',
+    path: '/mergeSort',
+    getParentRoute: () => AlgorithmsSortingRouteRoute,
+  } as any)
+const AlgorithmsSortingInsertionSortRoute =
+  AlgorithmsSortingInsertionSortRouteImport.update({
+    id: '/insertionSort',
+    path: '/insertionSort',
+    getParentRoute: () => AlgorithmsSortingRouteRoute,
+  } as any)
+const AlgorithmsSortingBubbleSortRoute =
+  AlgorithmsSortingBubbleSortRouteImport.update({
+    id: '/bubbleSort',
+    path: '/bubbleSort',
+    getParentRoute: () => AlgorithmsSortingRouteRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/organigram': typeof OrganigramRoute
+  '/algorithms/sorting': typeof AlgorithmsSortingRouteRouteWithChildren
   '/algorithms/searching': typeof AlgorithmsSearchingRoute
-  '/algorithms/sorting': typeof AlgorithmsSortingRoute
   '/algorithms': typeof AlgorithmsIndexRoute
+  '/algorithms/sorting/bubbleSort': typeof AlgorithmsSortingBubbleSortRoute
+  '/algorithms/sorting/insertionSort': typeof AlgorithmsSortingInsertionSortRoute
+  '/algorithms/sorting/mergeSort': typeof AlgorithmsSortingMergeSortRoute
+  '/algorithms/sorting/quickSort': typeof AlgorithmsSortingQuickSortRoute
+  '/algorithms/sorting/selectionSort': typeof AlgorithmsSortingSelectionSortRoute
+  '/algorithms/sorting/': typeof AlgorithmsSortingIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/organigram': typeof OrganigramRoute
   '/algorithms/searching': typeof AlgorithmsSearchingRoute
-  '/algorithms/sorting': typeof AlgorithmsSortingRoute
   '/algorithms': typeof AlgorithmsIndexRoute
+  '/algorithms/sorting/bubbleSort': typeof AlgorithmsSortingBubbleSortRoute
+  '/algorithms/sorting/insertionSort': typeof AlgorithmsSortingInsertionSortRoute
+  '/algorithms/sorting/mergeSort': typeof AlgorithmsSortingMergeSortRoute
+  '/algorithms/sorting/quickSort': typeof AlgorithmsSortingQuickSortRoute
+  '/algorithms/sorting/selectionSort': typeof AlgorithmsSortingSelectionSortRoute
+  '/algorithms/sorting': typeof AlgorithmsSortingIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/organigram': typeof OrganigramRoute
+  '/algorithms/sorting': typeof AlgorithmsSortingRouteRouteWithChildren
   '/algorithms/searching': typeof AlgorithmsSearchingRoute
-  '/algorithms/sorting': typeof AlgorithmsSortingRoute
   '/algorithms/': typeof AlgorithmsIndexRoute
+  '/algorithms/sorting/bubbleSort': typeof AlgorithmsSortingBubbleSortRoute
+  '/algorithms/sorting/insertionSort': typeof AlgorithmsSortingInsertionSortRoute
+  '/algorithms/sorting/mergeSort': typeof AlgorithmsSortingMergeSortRoute
+  '/algorithms/sorting/quickSort': typeof AlgorithmsSortingQuickSortRoute
+  '/algorithms/sorting/selectionSort': typeof AlgorithmsSortingSelectionSortRoute
+  '/algorithms/sorting/': typeof AlgorithmsSortingIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/organigram'
-    | '/algorithms/searching'
     | '/algorithms/sorting'
+    | '/algorithms/searching'
     | '/algorithms'
+    | '/algorithms/sorting/bubbleSort'
+    | '/algorithms/sorting/insertionSort'
+    | '/algorithms/sorting/mergeSort'
+    | '/algorithms/sorting/quickSort'
+    | '/algorithms/sorting/selectionSort'
+    | '/algorithms/sorting/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/organigram'
     | '/algorithms/searching'
-    | '/algorithms/sorting'
     | '/algorithms'
+    | '/algorithms/sorting/bubbleSort'
+    | '/algorithms/sorting/insertionSort'
+    | '/algorithms/sorting/mergeSort'
+    | '/algorithms/sorting/quickSort'
+    | '/algorithms/sorting/selectionSort'
+    | '/algorithms/sorting'
   id:
     | '__root__'
     | '/'
     | '/organigram'
-    | '/algorithms/searching'
     | '/algorithms/sorting'
+    | '/algorithms/searching'
     | '/algorithms/'
+    | '/algorithms/sorting/bubbleSort'
+    | '/algorithms/sorting/insertionSort'
+    | '/algorithms/sorting/mergeSort'
+    | '/algorithms/sorting/quickSort'
+    | '/algorithms/sorting/selectionSort'
+    | '/algorithms/sorting/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   OrganigramRoute: typeof OrganigramRoute
+  AlgorithmsSortingRouteRoute: typeof AlgorithmsSortingRouteRouteWithChildren
   AlgorithmsSearchingRoute: typeof AlgorithmsSearchingRoute
-  AlgorithmsSortingRoute: typeof AlgorithmsSortingRoute
   AlgorithmsIndexRoute: typeof AlgorithmsIndexRoute
 }
 
@@ -118,13 +193,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AlgorithmsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/algorithms/sorting': {
-      id: '/algorithms/sorting'
-      path: '/algorithms/sorting'
-      fullPath: '/algorithms/sorting'
-      preLoaderRoute: typeof AlgorithmsSortingRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/algorithms/searching': {
       id: '/algorithms/searching'
       path: '/algorithms/searching'
@@ -132,14 +200,87 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AlgorithmsSearchingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/algorithms/sorting': {
+      id: '/algorithms/sorting'
+      path: '/algorithms/sorting'
+      fullPath: '/algorithms/sorting'
+      preLoaderRoute: typeof AlgorithmsSortingRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/algorithms/sorting/': {
+      id: '/algorithms/sorting/'
+      path: '/'
+      fullPath: '/algorithms/sorting/'
+      preLoaderRoute: typeof AlgorithmsSortingIndexRouteImport
+      parentRoute: typeof AlgorithmsSortingRouteRoute
+    }
+    '/algorithms/sorting/selectionSort': {
+      id: '/algorithms/sorting/selectionSort'
+      path: '/selectionSort'
+      fullPath: '/algorithms/sorting/selectionSort'
+      preLoaderRoute: typeof AlgorithmsSortingSelectionSortRouteImport
+      parentRoute: typeof AlgorithmsSortingRouteRoute
+    }
+    '/algorithms/sorting/quickSort': {
+      id: '/algorithms/sorting/quickSort'
+      path: '/quickSort'
+      fullPath: '/algorithms/sorting/quickSort'
+      preLoaderRoute: typeof AlgorithmsSortingQuickSortRouteImport
+      parentRoute: typeof AlgorithmsSortingRouteRoute
+    }
+    '/algorithms/sorting/mergeSort': {
+      id: '/algorithms/sorting/mergeSort'
+      path: '/mergeSort'
+      fullPath: '/algorithms/sorting/mergeSort'
+      preLoaderRoute: typeof AlgorithmsSortingMergeSortRouteImport
+      parentRoute: typeof AlgorithmsSortingRouteRoute
+    }
+    '/algorithms/sorting/insertionSort': {
+      id: '/algorithms/sorting/insertionSort'
+      path: '/insertionSort'
+      fullPath: '/algorithms/sorting/insertionSort'
+      preLoaderRoute: typeof AlgorithmsSortingInsertionSortRouteImport
+      parentRoute: typeof AlgorithmsSortingRouteRoute
+    }
+    '/algorithms/sorting/bubbleSort': {
+      id: '/algorithms/sorting/bubbleSort'
+      path: '/bubbleSort'
+      fullPath: '/algorithms/sorting/bubbleSort'
+      preLoaderRoute: typeof AlgorithmsSortingBubbleSortRouteImport
+      parentRoute: typeof AlgorithmsSortingRouteRoute
+    }
   }
 }
+
+interface AlgorithmsSortingRouteRouteChildren {
+  AlgorithmsSortingBubbleSortRoute: typeof AlgorithmsSortingBubbleSortRoute
+  AlgorithmsSortingInsertionSortRoute: typeof AlgorithmsSortingInsertionSortRoute
+  AlgorithmsSortingMergeSortRoute: typeof AlgorithmsSortingMergeSortRoute
+  AlgorithmsSortingQuickSortRoute: typeof AlgorithmsSortingQuickSortRoute
+  AlgorithmsSortingSelectionSortRoute: typeof AlgorithmsSortingSelectionSortRoute
+  AlgorithmsSortingIndexRoute: typeof AlgorithmsSortingIndexRoute
+}
+
+const AlgorithmsSortingRouteRouteChildren: AlgorithmsSortingRouteRouteChildren =
+  {
+    AlgorithmsSortingBubbleSortRoute: AlgorithmsSortingBubbleSortRoute,
+    AlgorithmsSortingInsertionSortRoute: AlgorithmsSortingInsertionSortRoute,
+    AlgorithmsSortingMergeSortRoute: AlgorithmsSortingMergeSortRoute,
+    AlgorithmsSortingQuickSortRoute: AlgorithmsSortingQuickSortRoute,
+    AlgorithmsSortingSelectionSortRoute: AlgorithmsSortingSelectionSortRoute,
+    AlgorithmsSortingIndexRoute: AlgorithmsSortingIndexRoute,
+  }
+
+const AlgorithmsSortingRouteRouteWithChildren =
+  AlgorithmsSortingRouteRoute._addFileChildren(
+    AlgorithmsSortingRouteRouteChildren,
+  )
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   OrganigramRoute: OrganigramRoute,
+  AlgorithmsSortingRouteRoute: AlgorithmsSortingRouteRouteWithChildren,
   AlgorithmsSearchingRoute: AlgorithmsSearchingRoute,
-  AlgorithmsSortingRoute: AlgorithmsSortingRoute,
   AlgorithmsIndexRoute: AlgorithmsIndexRoute,
 }
 export const routeTree = rootRouteImport
