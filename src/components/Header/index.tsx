@@ -1,9 +1,9 @@
-import type {Algorythms} from "@/types";
+import type {Algorithms} from "@/types";
 import {descriptions, type HeaderProps} from "@/components/Header/descriptions.ts";
 import React from "react";
 import {Chip, Stack} from "@mui/material";
 
-export const Header: React.FC<{selectedAlgorithm: Algorythms}> = ({selectedAlgorithm}) => {
+export const Header: React.FC<{selectedAlgorithm: Algorithms}> = ({selectedAlgorithm}) => {
 
   const selected: HeaderProps = React.useMemo(() => descriptions[selectedAlgorithm], [selectedAlgorithm]);
 
