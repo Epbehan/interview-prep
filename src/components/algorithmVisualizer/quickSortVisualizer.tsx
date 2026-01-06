@@ -70,7 +70,7 @@ function buildQuickSortSteps(values: number[]): QuickStep[] {
   };
 
   const partition = (low: number, high: number): number => {
-    // Lomuto partition (pivot at high)
+    // pivot at high
     const pivotIndex = high;
     const pivotValue = workingArray[pivotIndex];
 
