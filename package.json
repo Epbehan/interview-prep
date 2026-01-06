@@ -7,7 +7,12 @@
     "start": "vite --port 3000",
     "build": "vite build && tsc",
     "serve": "vite preview",
-    "test": "vitest run"
+    "test": "vitest run",
+    "bubble": "NODE_NO_WARNINGS=1 node --loader ts-node/esm src/sortingAlgorithms/useBubbleSort.ts",
+    "quick": "NODE_NO_WARNINGS=1 node --loader ts-node/esm src/sortingAlgorithms/useQuickSort.ts",
+    "merge": "NODE_NO_WARNINGS=1 node --loader ts-node/esm src/sortingAlgorithms/useMergeSort.ts",
+    "selection": "NODE_NO_WARNINGS=1 node --loader ts-node/esm src/sortingAlgorithms/useSelectionSort.ts",
+    "insertion": "NODE_NO_WARNINGS=1 node --loader ts-node/esm src/sortingAlgorithms/useInsertionSort.ts"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -31,7 +36,8 @@
     "@types/react-dom": "^19.0.3",
     "@vitejs/plugin-react": "^4.3.4",
     "jsdom": "^26.0.0",
-    "typescript": "^5.7.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3",
     "vite": "^6.3.5",
     "vitest": "^3.0.5",
     "web-vitals": "^4.2.4"

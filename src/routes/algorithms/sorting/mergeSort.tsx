@@ -1,6 +1,8 @@
+// src/routes/algorithms/sorting/mergeSort.tsx
 import { createFileRoute } from "@tanstack/react-router";
-import {Algorithms} from "@/types";
-import {Header} from "@/components/Header";
+import { Algorithms } from "@/types";
+import { Header } from "@/components/Header";
+import MergeSortVisualizer from "@/components/algorithmVisualizer/mergeSortVisualizer";
 
 export const Route = createFileRoute("/algorithms/sorting/mergeSort")({
   component: RouteComponent,
@@ -9,7 +11,8 @@ export const Route = createFileRoute("/algorithms/sorting/mergeSort")({
 function RouteComponent() {
   return (
     <div>
-      <Header selectedAlgorithm={Algorithms.InsertionSort} />
+      <Header selectedAlgorithm={Algorithms.MergeSort} />
+      <MergeSortVisualizer />
     </div>
   );
 }

@@ -1,15 +1,17 @@
 import { createFileRoute } from "@tanstack/react-router";
-import {Algorithms} from "@/types";
-import {Header} from "@/components/Header";
+import { Header } from "@/components/Header";
+import { Algorithms } from "@/types";
+import QuickSortVisualizer from "@/components/algorithmVisualizer/quickSortVisualizer";
 
-export const Route = createFileRoute("/algorithms/sorting/quickSort")({
-  component: RouteComponent,
-});
-
-function RouteComponent() {
+function QuickSortPage() {
   return (
     <div>
       <Header selectedAlgorithm={Algorithms.QuickSort} />
+      <QuickSortVisualizer />
     </div>
   );
 }
+
+export const Route = createFileRoute("/algorithms/sorting/quickSort")({
+  component: QuickSortPage,
+});

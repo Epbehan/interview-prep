@@ -1,4 +1,3 @@
-import * as React from "react";
 import {
   createFileRoute,
   Link,
@@ -65,7 +64,7 @@ function SortingLayout() {
           />
         </Tabs>
       </AppBar>
-      
+
       <Box sx={{ p: 2 }}>
         <Outlet />
       </Box>
